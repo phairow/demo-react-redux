@@ -1,16 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import logo from './logo.svg';
+import logo from '../../logo.svg';
 import './App.css';
-import { simpleAction } from './actions/simpleAction';
+import { simpleAction } from '../../actions/simpleAction';
 
 function App({ dispatch, result }) {
-  const [greeting, setGreeting] = useState(
-    'Hello Function Component!'
-  );
 
   let simpleActionClickHandler = (event) => {
-    setGreeting('test this')
     dispatch(simpleAction());
   }
 
