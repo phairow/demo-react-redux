@@ -7,7 +7,7 @@ import App from './components/app/App';
 import * as serviceWorker from './serviceWorker';
 import * as PubNub from 'pubnub';
 import {
-    createStatusActionListener,
+    createNetworkStatusActionListener,
     createPubNubActionListener,
     createPresenceActionListener,
     combineListeners
@@ -22,12 +22,12 @@ let store = configureStore();
 
 pubnub.addListener(createPubNubActionListener(store.dispatch));
 
-// pubnub.addListener(createStatusActionListener(store.dispatch));
+// pubnub.addListener(createNetworkStatusActionListener(store.dispatch));
 
 // pubnub.addListener(
 //     combineListeners(
 //         createPresenceActionListener(store.dispatch),
-//         createStatusActionListener(store.dispatch)
+//         createNetworkStatusActionListener(store.dispatch)
 //     )
 // )
 
