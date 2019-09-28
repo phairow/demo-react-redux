@@ -6,7 +6,11 @@ import './index.css';
 import App from './components/app/App';
 import * as serviceWorker from './serviceWorker';
 import * as PubNub from 'pubnub';
-import { createStatusActionListener } from 'pubnub-redux';
+import {
+    createStatusActionListener,
+    createPubNubActionListener,
+    createPresenceActionListener 
+} from 'pubnub-redux';
 
 let pubnub = new PubNub({
     publishKey: 'demo',
@@ -15,9 +19,9 @@ let pubnub = new PubNub({
 
 let store = configureStore();
 
-pubnub.addListener({
-    status: createStatusActionListener(store.dispatch)
-});
+// pubnub.addListener(createStatusActionListener(store.dispatch));
+
+pubnub.addListener(createPubNubActionListener(store.dispatch));
 
 pubnub.subscribe({
     channels: ['rai-redux']
