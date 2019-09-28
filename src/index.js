@@ -9,7 +9,8 @@ import * as PubNub from 'pubnub';
 import {
     createStatusActionListener,
     createPubNubActionListener,
-    createPresenceActionListener 
+    createPresenceActionListener,
+    combineListeners
 } from 'pubnub-redux';
 
 let pubnub = new PubNub({
@@ -19,9 +20,16 @@ let pubnub = new PubNub({
 
 let store = configureStore();
 
+pubnub.addListener(createPubNubActionListener(store.dispatch));
+
 // pubnub.addListener(createStatusActionListener(store.dispatch));
 
-pubnub.addListener(createPubNubActionListener(store.dispatch));
+// pubnub.addListener(
+//     combineListeners(
+//         createPresenceActionListener(store.dispatch),
+//         createStatusActionListener(store.dispatch)
+//     )
+// )
 
 pubnub.subscribe({
     channels: ['rai-redux']
