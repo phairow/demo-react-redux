@@ -1,3 +1,15 @@
+:root {
+  --header-height: 2.75em;
+  --header-padding: 0.4em;
+  --header-menu-width: 18em;
+  --panel-border-width: 1px;
+  --panel-padding: 0.8vw;
+  --panel-height: calc(100% - var(--header-height) - var(--panel-border-width) - (var(--header-padding) * 2) - (var(--panel-padding) * 2));
+  --left-panel-width: calc(20vw - (var(--panel-padding) * 2) - var(--panel-border-width));
+  --right-panel-margin-left: calc(var(--left-panel-width) + (var(--panel-padding) * 2) + var(--panel-border-width));
+  --right-panel-width: calc(80vw - (var(--panel-padding) * 2));
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +22,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.hide {
+  display: none;
 }

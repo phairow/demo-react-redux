@@ -1,0 +1,50 @@
+.App {
+  color: white;
+  background-color: #282c34;
+  font-size: em;
+  min-height: 100vh;
+}
+
+.App-header {
+  height: var(--header-height);
+  background-color: #282c34;
+  padding: var(--header-padding);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: white;
+}
+
+.App-header-icon {
+  padding-top: var(--header-padding);
+  height: calc(var(--header-height) - (var(--header-padding) * 2));
+}
+
+.App-title {
+  float: right;
+  padding: var(--panel-padding);
+}
+
+.App-title span {
+  font-size: 0.6em;
+}
+
+.App-header-label {
+  padding: calc(var(--panel-padding) / 2);
+}
+
+.App-menu {
+  padding: calc(var(--panel-padding) / 2);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-width: var(--header-menu-width);
+}
+
+.App-load-button {
+  cursor: pointer;
+  font-size: calc(1.15em);
+  border-radius: 0.2em;
+}

@@ -1,3 +1,6 @@
+# PubNub Demo React Redux
+Example usage of the react and redux sdks for PubNub
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

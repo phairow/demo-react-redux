@@ -1,0 +1,11 @@
+.Left {
+  position: absolute;
+  float: left;
+  width: var(--left-panel-width);
+  padding: var(--panel-padding);
+  border-right-style: solid;
+  border-right-width: var(--panel-border-width);
+  border-right-color: white;
+  min-height: var(--panel-height);
+
+}

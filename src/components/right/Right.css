@@ -1,0 +1,7 @@
+.Right {
+  position: absolute;
+  margin-left: var(--right-panel-margin-left);
+  min-width: var(--right-panel-width);
+  padding: var(--panel-padding);
+  min-height: var(--panel-height);
+}
