@@ -92,18 +92,18 @@ const Left: React.FC<LeftProps> = ({ user }) => {
             Direct Messages
           </div>
         </li>
-        {/* { spaces ? Object.values(spaces).map(function(space: any, index: any){
-         return <li className="ConversationItem" key={ index }>
-            {(space !== undefined) ? (
-            <div>
-              <FontAwesomeIcon className="GroupIcon" icon={faHashtag} />
-              &nbsp; {space.name}
-            </div>
-            ) : (
-              <div> Loading...</div>
-            )}
-          </li>;
-        }) : []} */}
+          {/* { spaces ? Object.values(spaces).map(function(space: any, index: any){
+          return <li className="ConversationItem" key={ index }>
+              {(space !== undefined) ? (
+              <div>
+                <FontAwesomeIcon className="GroupIcon" icon={faHashtag} />
+                &nbsp; {space.name}
+              </div>
+              ) : (
+                <div> Loading...</div>
+              )}
+            </li>;
+          }) : []} */}
       </ul>
     </div>
   );

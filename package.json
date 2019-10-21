@@ -29,7 +29,7 @@
     "@fortawesome/react-fontawesome": "^0.1.7",
     "pubnub": "^4.27.0",
     "pubnub-react": "^2.0.0-beta.4",
-    "pubnub-redux": "^0.1.7-alpha",
+    "pubnub-redux": "^0.1.8-alpha",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-redux": "^7.1.1",
