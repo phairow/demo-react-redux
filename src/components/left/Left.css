@@ -7,5 +7,33 @@
   border-right-width: var(--panel-border-width);
   border-right-color: white;
   min-height: var(--panel-height);
+  max-height: var(--panel-height);
+  overflow: scroll;
+}
 
+.NetworkStatus {
+  color: red;
+}
+
+.NetworkStatus.connected {
+  color: green;
+}
+
+.SectionHeading {
+  margin-bottom: 10px;
+}
+
+.GroupConversations {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.DirectMessages {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.ConversationItem {
+  margin-top: 5px;
+  margin-left: 5px;
 }

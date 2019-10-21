@@ -3,6 +3,7 @@
   background-color: #282c34;
   font-size: em;
   min-height: 100vh;
+  max-height: 100vh;
 }
 
 .App-header {

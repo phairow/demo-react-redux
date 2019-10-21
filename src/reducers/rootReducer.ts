@@ -4,7 +4,8 @@ import {
     createSpaceReducer,
     createUserReducer,
     createSpaceListReducer,
-    createUserListReducer
+    createUserListReducer,
+    createMembershipReducer,
 } from 'pubnub-redux';
 export default combineReducers({
  networkStatus: createNetworkStatusReducer(false),
@@ -12,4 +13,5 @@ export default combineReducers({
  allSpaces: createSpaceListReducer(),
  users: createUserReducer(),
  allUsers: createUserListReducer(),
+ membership: createMembershipReducer()
 });

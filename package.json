@@ -24,6 +24,9 @@
     ]
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.7",
     "pubnub": "^4.27.0",
     "pubnub-react": "^2.0.0-beta.4",
     "pubnub-redux": "^0.1.7-alpha",
@@ -43,6 +46,7 @@
     "@types/react-redux": "^7.1.4",
     "@types/redux": "^3.6.0",
     "@types/redux-thunk": "^2.1.0",
+    "reselect": "^4.0.0",
     "tslint": "^5.20.0",
     "typescript": "3.6.3"
   }

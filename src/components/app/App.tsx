@@ -14,7 +14,6 @@ import {
 import { usePubNub } from 'pubnub-react';
 import Left from '../left/Left';
 import Right from '../right/Right';
-
 const App: React.FC = () => {
   const [userName, setUserName] = useState('');
   const [authenticated, setAuthenticated] = useState(false);
@@ -74,8 +73,14 @@ const App: React.FC = () => {
           </button>
         </div>
       </header>
-      <main className={!authenticated || user === undefined ? 'hide': undefined}>
-        <Left user={user} />
+      <main>
+        {(authenticated && user !== undefined) ? (
+          <Left user={user} />
+        ) : (
+          <div>
+            Login
+          </div>
+        )}
         <Right />
       </main>
     </div>

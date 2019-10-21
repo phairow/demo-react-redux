@@ -4,4 +4,5 @@
   min-width: var(--right-panel-width);
   padding: var(--panel-padding);
   min-height: var(--panel-height);
+  max-height: var(--panel-height);
 }

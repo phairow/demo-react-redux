@@ -6,6 +6,8 @@ declare global {
   interface Window { __REDUX_DEVTOOLS_EXTENSION__: any; }
 }
 
+export type AppState = ReturnType<typeof rootReducer>
+
 export default function configureStore() {
 
   let middleware: Middleware[] = [
