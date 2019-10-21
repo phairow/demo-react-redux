@@ -10,40 +10,49 @@ import {
   createUser,
   fetchUserById,
   User,
+  fetchMemberships,
 } from 'pubnub-redux';
 import { usePubNub } from 'pubnub-react';
 import Left from '../left/Left';
 import Right from '../right/Right';
+import { membershipSelector } from '../../selectors/membershipSelector';
 const App: React.FC = () => {
-  const [userName, setUserName] = useState('');
+  const [userId, setUserId] = useState('');
   const [authenticated, setAuthenticated] = useState(false);
   const dispatch = useDispatch();
   const pubnub = usePubNub();
-  const user = useSelector((state: any) => state.users.byId[userName]);
+  const user = useSelector((state: any) => state.users.byId[userId]);
 
-  let updateUserName = (e:  React.FormEvent<HTMLInputElement>) => {
-    setUserName(e.currentTarget.value);
+  let updateUserId = (e:  React.FormEvent<HTMLInputElement>) => {
+    setUserId(e.currentTarget.value);
   }
   
   let keyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.keyCode === 13) {
-      setUserName(e.currentTarget.value);
+      setUserId(e.currentTarget.value);
       loginout();
     }
   }
 
   let loginout = () => {
     console.log('user,,', user)
-    if (!userName) {
+    if (!userId) {
       return;
     }
 
     if (!authenticated || user === undefined) {
-      dispatch(fetchUserById(pubnub, userName));
+      // load the user object
+      dispatch(fetchUserById(pubnub, userId));
+      // load the space memberships
+      dispatch(fetchMemberships(pubnub, userId, {
+        include: {
+          spaceFields: true
+        }
+      }));
       setAuthenticated(true);
     } else {
       setAuthenticated(false  );
-      setUserName('');
+      setUserId('');
     }
   }
 
@@ -59,14 +68,14 @@ const App: React.FC = () => {
           <label className="App-header-label">User ID:</label>
           <input
             className={!authenticated || user === undefined ? undefined: 'hide'}
-            value={userName}
-            onChange={updateUserName}
+            value={userId}
+            onChange={updateUserId}
             onKeyDown={keyPress}
           ></input>
           <div
             className={`App-header-label ${!authenticated || user === undefined ? 'hide': undefined}`}
           >
-            {userName}
+            {userId}
           </div>
           <button className="App-load-button" onClick={loginout}>
             { authenticated && user !== undefined ? 'Logout' : 'Login'}
