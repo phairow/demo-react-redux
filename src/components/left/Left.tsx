@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Left.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { usePubNub } from 'pubnub-react';
+import { useSelector } from 'react-redux';
 import {
   User
 } from 'pubnub-redux';

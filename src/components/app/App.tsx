@@ -5,11 +5,7 @@ import {
 } from 'react-redux';
 import './App.css';
 import {
-  fetchSpaces,
-  fetchUsers,
-  createUser,
   fetchUserById,
-  User,
   fetchMemberships,
 } from 'pubnub-redux';
 import { usePubNub } from 'pubnub-react';
