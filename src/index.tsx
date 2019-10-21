@@ -15,8 +15,8 @@ import {
 import { PubNubProvider } from 'pubnub-react';
 
 let pubnub = new Pubnub({
-  publishKey: 'demo',
-  subscribeKey: 'demo'
+  publishKey: 'pub-c-f9b0d980-af95-461e-ac87-012d62f92228',
+  subscribeKey: 'sub-c-a3470ba0-b7a3-11e9-aec0-fa920b0289f3'
 });
 
 let store = configureStore();

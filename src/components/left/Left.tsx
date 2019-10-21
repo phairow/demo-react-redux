@@ -43,7 +43,7 @@ const Left: React.FC<LeftProps> = ({ user }) => {
   const [spacesInit, setSpacesinit] = useState(false);
   const membership = useSelector(membershipSelector(user));
   const spaces = useSelector(membershipSpacesSelector(user));
-  const isConnected = useSelector((state: any) => state.networkStatus.isConnected);
+  const isConnected = useSelector((state: AppState) => state.networkStatus.isConnected);
 
 
   if (user !== undefined) {
