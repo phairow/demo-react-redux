@@ -16,10 +16,10 @@ import { ToastProvider } from 'react-toast-notifications';
 // @ts-ignore-end
 
 let pubnub = new Pubnub({
-  // publishKey: 'pub-c-f9b0d980-af95-461e-ac87-012d62f92228',
-  // subscribeKey: 'sub-c-a3470ba0-b7a3-11e9-aec0-fa920b0289f3',
-  publishKey: 'demo-36',
-  subscribeKey: 'demo-36',
+  publishKey: 'pub-c-f9b0d980-af95-461e-ac87-012d62f92228',
+  subscribeKey: 'sub-c-a3470ba0-b7a3-11e9-aec0-fa920b0289f3',
+  // publishKey: 'demo-36',
+  // subscribeKey: 'demo-36',
 });
 
 let store = configureStore();
