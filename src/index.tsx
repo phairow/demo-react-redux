@@ -7,12 +7,12 @@ import { Provider } from 'react-redux';
 import configureStore from './store';
 import Pubnub from 'pubnub';
 import {
-    createNetworkStatusActionListener,
     createPubNubActionListener,
-    createPresenceActionListener,
-    combineListeners
 } from 'pubnub-redux';
 import { PubNubProvider } from 'pubnub-react';
+// @ts-ignore-start 
+import { ToastProvider } from 'react-toast-notifications';
+// @ts-ignore-end
 
 let pubnub = new Pubnub({
   publishKey: 'pub-c-f9b0d980-af95-461e-ac87-012d62f92228',
@@ -54,11 +54,13 @@ setTimeout(() => {
 }, 2000);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <PubNubProvider client={pubnub}>
-      <App />
-    </PubNubProvider>
-  </Provider>,
+  <ToastProvider placement="top-center">
+    <Provider store={store}>
+      <PubNubProvider client={pubnub}>
+        <App />
+      </PubNubProvider>
+    </Provider>
+  </ToastProvider>,
   document.getElementById('root')
 );
 

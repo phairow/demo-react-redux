@@ -1,0 +1,20 @@
+.ChannelJoin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 2em;
+}
+
+.Close {
+  margin-right: 4em;
+  float: right;
+}
+
+.JoinChannelForm {
+  height: 50%;
+  overflow: scroll;
+  padding: 2em;
+}

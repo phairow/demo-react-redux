@@ -29,11 +29,12 @@
     "@fortawesome/react-fontawesome": "^0.1.7",
     "pubnub": "^4.27.0",
     "pubnub-react": "^2.0.0-beta.4",
-    "pubnub-redux": "^0.1.8-alpha",
+    "pubnub-redux": "^0.1.11-alpha",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-redux": "^7.1.1",
     "react-scripts": "3.2.0",
+    "react-toast-notifications": "^2.2.5",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0"

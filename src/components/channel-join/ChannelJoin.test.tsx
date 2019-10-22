@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Left from './Left';
+import ChannelJoin from './ChannelJoin';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
   let user = { id: 'testuser', name: 'testuser' };
-  let space = { id: 'testspace', name: 'testspace' };
-  ReactDOM.render(<Left user={user} space={space} createChannel={() => {}} joinChannel={() => {}} selectChannel={() => {}} />, div);
+  ReactDOM.render(<ChannelJoin hide={() => {}} user={user} />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
