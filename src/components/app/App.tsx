@@ -48,6 +48,10 @@ const App: React.FC = () => {
       }));
       setAuthenticated(true);
       localStorage.setItem('userId', userId);
+
+      pubnub.subscribe({
+        channels: ['rai-redux', userId]
+      })
     } else {
       setAuthenticated(false);
       localStorage.setItem('userId', '');

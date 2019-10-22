@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import './Left.css';
 import { useSelector } from 'react-redux';
 import {
-  User
+  User,
+  Identifiable,
 } from 'pubnub-redux';
 import {
   faCircle,
@@ -14,6 +15,7 @@ import { AppState } from '../../store';
 import {
   membershipSpacesSelector,
 } from '../../selectors/membershipSelector';
+import { usePubNub } from 'pubnub-react';
 
 type LeftProps = {
   user: User,
@@ -24,6 +26,7 @@ type LeftProps = {
 }
 
 const Left: React.FC<LeftProps> = ({ user, space, createChannel, joinChannel, selectChannel }) => {
+  const pubnub = usePubNub();
   const spaces = useSelector(membershipSpacesSelector(user));
   const isConnected = useSelector((state: AppState) => state.networkStatus.isConnected);
 
@@ -39,6 +42,14 @@ const Left: React.FC<LeftProps> = ({ user, space, createChannel, joinChannel, se
   
   useEffect(() => {
     selectChannel(space && space.id !== '' ? space : spaces[0]);
+
+    if (spaces !== undefined) {
+      let channels: string[] = [ user.id ].concat(spaces.map((s: Identifiable) => s.id));
+
+      pubnub.subscribe({
+        channels: channels
+      })
+    }
   })
 
   return (
