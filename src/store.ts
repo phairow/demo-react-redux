@@ -8,10 +8,14 @@ declare global {
 
 export type AppState = ReturnType<typeof rootReducer>
 
-export default function configureStore() {
+export default function configureStore(pubnub: any) {
 
   let middleware: Middleware[] = [
-    thunk,
+    thunk.withExtraArgument({
+      pubnub: {
+        api: pubnub
+      }
+    }),
   ];
 
   let enhancers: StoreEnhancer[] = [

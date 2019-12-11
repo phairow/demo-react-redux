@@ -36,12 +36,13 @@ const App: React.FC = () => {
     if (!userId) {
       return;
     }
-
+console.log('user is ', userId)
     if (!authenticated || user === undefined) {
       // load the user object
-      dispatch(fetchUserById(pubnub, userId));
+      dispatch(fetchUserById({ userId }));
       // load the space memberships
-      dispatch(fetchMemberships(pubnub, userId, {
+      dispatch(fetchMemberships({
+        userId,
         include: {
           spaceFields: true
         }

@@ -7,8 +7,7 @@ import { Provider } from 'react-redux';
 import configureStore from './store';
 import Pubnub from 'pubnub';
 import {
-    createPubNubActionListener,
-    createMembershipActionListener,
+    createPubNubListener,
 } from 'pubnub-redux';
 import { PubNubProvider } from 'pubnub-react';
 // @ts-ignore-start 
@@ -16,15 +15,15 @@ import { ToastProvider } from 'react-toast-notifications';
 // @ts-ignore-end
 
 let pubnub = new Pubnub({
-  publishKey: 'pub-c-f9b0d980-af95-461e-ac87-012d62f92228',
-  subscribeKey: 'sub-c-a3470ba0-b7a3-11e9-aec0-fa920b0289f3',
-  // publishKey: 'demo-36',
-  // subscribeKey: 'demo-36',
+  // publishKey: 'pub-c-f9b0d980-af95-461e-ac87-012d62f92228',
+  // subscribeKey: 'sub-c-a3470ba0-b7a3-11e9-aec0-fa920b0289f3',
+  publishKey: 'demo-36',
+  subscribeKey: 'demo-36',
 });
 
-let store = configureStore();
+let store = configureStore(pubnub);
 
-pubnub.addListener(createPubNubActionListener(store.dispatch));
+pubnub.addListener(createPubNubListener(store.dispatch));
 
 // pubnub.addListener(createNetworkStatusActionListener(store.dispatch));
 

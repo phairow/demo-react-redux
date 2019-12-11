@@ -3,7 +3,6 @@ import './Left.css';
 import { useSelector } from 'react-redux';
 import {
   User,
-  Identifiable,
 } from 'pubnub-redux';
 import {
   faCircle,
@@ -44,7 +43,7 @@ const Left: React.FC<LeftProps> = ({ user, space, createChannel, joinChannel, se
     selectChannel(space && space.id !== '' ? space : spaces[0]);
 
     if (spaces !== undefined) {
-      let channels: string[] = [ user.id ].concat(spaces.map((s: Identifiable) => s.id));
+      let channels: string[] = [ user.id ].concat(spaces.map((s) => s.id));
 
       pubnub.subscribe({
         channels: channels

@@ -6,7 +6,7 @@ export const spacesSelector = (state: AppState) => {
 };
 
 export const allSpacesListSelector = (state: AppState) => {
-  return state.allSpaces.data;
+  return state.allSpaces.spaceIds;
 }
 
 export const allSpacesSelector = createSelector([allSpacesListSelector, spacesSelector], (allSpacesList, spaces) => {
