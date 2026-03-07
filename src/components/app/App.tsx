@@ -16,6 +16,8 @@ import Left from '../left/Left';
 import Right from '../right/Right';
 import ChannelCreate from '../channel-create/ChannelCreate';
 import ChannelJoin from '../channel-join/ChannelJoin';
+import Header from '../header/Header';
+import Footer from '../footer/Footer';
 
 const App: React.FC = () => {
   const [userId, setUserId] = useState('');
@@ -28,10 +30,10 @@ const App: React.FC = () => {
   const pubnub = usePubNub();
   const user = useSelector((state: any) => state.users.byId[userId]);
 
-  let updateUserId = (e:  React.FormEvent<HTMLInputElement>) => {
+  let updateUserId = (e: React.FormEvent<HTMLInputElement>) => {
     setUserId(e.currentTarget.value);
   }
-  
+
   let loginout = () => {
     if (!userId) {
       return;
@@ -98,32 +100,14 @@ console.log('user is ', userId)
 
   return (
     <div className="App">
-      <header className="App-header">
-        <div >
-          <img className="App-header-icon" src="pubnub.svg"  />
-          <img className="App-header-icon" src="logo192.png"  />
-          <img className="App-header-icon" src="redux-icon.svg"  />
-          <span className="App-title">Demo Chat <span>Example usage of the PubNub Redux SDK</span></span>
-        </div>
-        <div className="App-menu">
-          <label className="App-header-label">User ID:</label>
-          <input
-            className={!authenticated || user === undefined ? undefined: 'hide'}
-            name="userid"
-            value={userId}
-            onChange={updateUserId}
-            onKeyDown={keyPress}
-          ></input>
-          <div
-            className={`App-header-label ${!authenticated || user === undefined ? 'hide': undefined}`}
-          >
-            {userId}
-          </div>
-          <button className="App-load-button" onClick={loginout}>
-            { authenticated && user !== undefined ? 'Log Out' : 'Log In'}
-          </button>
-        </div>
-      </header>
+      <Header
+        userId={userId}
+        authenticated={authenticated}
+        userLoaded={user !== undefined}
+        onUserIdChange={updateUserId}
+        onKeyPress={keyPress}
+        onLoginOut={loginout}
+      />
       <main>
         {(authenticated && user !== undefined) ? (
           <Left
@@ -144,16 +128,17 @@ console.log('user is ', userId)
           undefined
         )}
       </main>
-      { showJoinChannel && user !== undefined ? 
+      { showJoinChannel && user !== undefined ?
         <ChannelJoin hide={closeJoinChannel} user={user} />
-      : 
+      :
         undefined
       }
-      { showCreateChannel ? 
+      { showCreateChannel ?
         <ChannelCreate hide={closeCreateChannel} />
-      : 
+      :
         undefined
       }
+      <Footer />
     </div>
   );
 };
