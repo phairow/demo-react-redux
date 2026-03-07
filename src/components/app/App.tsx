@@ -14,6 +14,8 @@ import {
 import { usePubNub } from 'pubnub-react';
 import Left from '../left/Left';
 import Right from '../right/Right';
+import Header from '../header/Header';
+import Footer from '../footer/Footer';
 import ChannelCreate from '../channel-create/ChannelCreate';
 import ChannelJoin from '../channel-join/ChannelJoin';
 
@@ -24,7 +26,7 @@ const App: React.FC = () => {
   const [showJoinChannel, setShowJoinChannel] = useState(false);
   const [showCreateChannel, setShowCreateChannel] = useState(false);
   const [activeChannel, setActiveChannel] = useState<Space>({ id: '', name: ''});
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>();
   const pubnub = usePubNub();
   const user = useSelector((state: any) => state.users.byId[userId]);
 
@@ -39,10 +41,9 @@ const App: React.FC = () => {
 console.log('user is ', userId)
     if (!authenticated || user === undefined) {
       // load the user object
-      dispatch(fetchUserById({ userId }));
+      dispatch(fetchUserById(pubnub, userId));
       // load the space memberships
-      dispatch(fetchMemberships({
-        userId,
+      dispatch(fetchMemberships(pubnub, userId, {
         include: {
           spaceFields: true
         }
@@ -98,33 +99,15 @@ console.log('user is ', userId)
 
   return (
     <div className="App">
-      <header className="App-header">
-        <div >
-          <img className="App-header-icon" src="pubnub.svg"  />
-          <img className="App-header-icon" src="logo192.png"  />
-          <img className="App-header-icon" src="redux-icon.svg"  />
-          <span className="App-title">Demo Chat <span>Example usage of the PubNub Redux SDK</span></span>
-        </div>
-        <div className="App-menu">
-          <label className="App-header-label">User ID:</label>
-          <input
-            className={!authenticated || user === undefined ? undefined: 'hide'}
-            name="userid"
-            value={userId}
-            onChange={updateUserId}
-            onKeyDown={keyPress}
-          ></input>
-          <div
-            className={`App-header-label ${!authenticated || user === undefined ? 'hide': undefined}`}
-          >
-            {userId}
-          </div>
-          <button className="App-load-button" onClick={loginout}>
-            { authenticated && user !== undefined ? 'Log Out' : 'Log In'}
-          </button>
-        </div>
-      </header>
-      <main>
+      <Header
+        userId={userId}
+        authenticated={authenticated}
+        hasUser={user !== undefined}
+        onUserIdChange={updateUserId}
+        onUserIdKeyPress={keyPress}
+        onLoginToggle={loginout}
+      />
+      <main className="App-main">
         {(authenticated && user !== undefined) ? (
           <Left
             user={user}
@@ -144,6 +127,7 @@ console.log('user is ', userId)
           undefined
         )}
       </main>
+      <Footer />
       { showJoinChannel && user !== undefined ? 
         <ChannelJoin hide={closeJoinChannel} user={user} />
       : 
