@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import configureStore from './store';
 import Pubnub from 'pubnub';
 import {
-    createPubNubListener,
+    createPubNubActionListener,
 } from 'pubnub-redux';
 import { PubNubProvider } from 'pubnub-react';
 // @ts-ignore-start 
@@ -23,7 +23,7 @@ let pubnub = new Pubnub({
 
 let store = configureStore(pubnub);
 
-pubnub.addListener(createPubNubListener(store.dispatch));
+pubnub.addListener(createPubNubActionListener(store.dispatch));
 
 // pubnub.addListener(createNetworkStatusActionListener(store.dispatch));
 

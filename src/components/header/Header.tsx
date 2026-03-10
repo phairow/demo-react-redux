@@ -1,21 +1,15 @@
 import React from 'react';
 
 interface HeaderProps {
-  userId: string;
-  authenticated: boolean;
-  hasUser: boolean;
-  onUserIdChange: (e: React.FormEvent<HTMLInputElement>) => void;
-  onUserIdKeyPress: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  onLoginToggle: () => void;
+  title: string;
+  subtitle: string;
+  onLogout: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({
-  userId,
-  authenticated,
-  hasUser,
-  onUserIdChange,
-  onUserIdKeyPress,
-  onLoginToggle,
+  title,
+  subtitle,
+  onLogout,
 }) => {
   return (
     <header className="App-header">
@@ -28,19 +22,12 @@ const Header: React.FC<HeaderProps> = ({
         </span>
       </div>
       <div className="App-menu">
-        <label className="App-header-label">User ID:</label>
-        <input
-          className={!authenticated || !hasUser ? undefined : 'hide'}
-          name="userid"
-          value={userId}
-          onChange={onUserIdChange}
-          onKeyDown={onUserIdKeyPress}
-        ></input>
-        <div className={`App-header-label ${!authenticated || !hasUser ? 'hide' : undefined}`}>
-          {userId}
+        <div className="App-user-summary">
+          <span className="App-header-label">{title}</span>
+          <span className="App-header-subtitle">{subtitle}</span>
         </div>
-        <button className="App-load-button" onClick={onLoginToggle}>
-          {authenticated && hasUser ? 'Log Out' : 'Log In'}
+        <button className="App-load-button" onClick={onLogout}>
+          Log Out
         </button>
       </div>
     </header>

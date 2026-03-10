@@ -7,7 +7,9 @@ import {
     createUserListReducer,
     createMembershipReducer,
 } from 'pubnub-redux';
+import authReducer from './authReducer';
 export default combineReducers({
+ auth: authReducer,
  networkStatus: createNetworkStatusReducer(false),
  spaces: createSpaceReducer(),
  allSpaces: createSpaceListReducer(),

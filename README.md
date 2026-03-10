@@ -45,3 +45,19 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Login Demo
+
+The app now uses a mocked login flow with a persisted browser session.
+
+### Demo credentials
+
+- Email: `demo@pubnub.com`
+- Password: `password123`
+
+### Login behavior
+
+- Unauthenticated users are redirected to `#/login`.
+- After a successful login, the app redirects to `#/chat`.
+- The auth session is saved in `localStorage` and restored on refresh.
+- Use the `Log Out` button in the header to clear the session.
